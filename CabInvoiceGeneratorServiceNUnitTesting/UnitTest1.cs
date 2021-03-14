@@ -10,5 +10,6 @@ namespace CabInvoiceGeneratorServiceNUnitTesting
         {
             invoiceGenerator = new InvoiceGenerator();
         }
+
     }
 }
