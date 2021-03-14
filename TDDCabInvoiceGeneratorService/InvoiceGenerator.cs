@@ -6,9 +6,8 @@ namespace TDDCabInvoiceGeneratorService
 {
    public class InvoiceGenerator
     {
-        
-       public enum ServiceType
-        { NORMAL_RIDE,PREMIUM_RIDE }
+        public enum ServiceType
+        { NORMAL_RIDE, PREMIUM_RIDE }
         readonly int pricePerKilometer;
         readonly int pricePerMinute;
         readonly int minimumFare;
@@ -59,6 +58,7 @@ namespace TDDCabInvoiceGeneratorService
         /// </exception>
         public double returnTotalFareForSingleRide(Ride ride)
         {
+            
             if (ride.distance < 0)
             {
                 throw new InvoiceGeneratorException(InvoiceGeneratorException.ExceptionType.INVALID_DISTANCE, "Invalid distance encountered!");
@@ -67,7 +67,10 @@ namespace TDDCabInvoiceGeneratorService
             {
                 throw new InvoiceGeneratorException(InvoiceGeneratorException.ExceptionType.INVALID_TIME, "Invalid time encountered!");
             }
-            return Math.Max(minimumFare , ride.distance * pricePerKilometer + ride.time * pricePerMinute);
+            return Math.Max(minimumFare, ride.distance * pricePerKilometer + ride.time * pricePerMinute);
+            }
+            
+
         }
     }
-}
+

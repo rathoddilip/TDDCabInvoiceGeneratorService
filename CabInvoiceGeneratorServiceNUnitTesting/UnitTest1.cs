@@ -74,6 +74,13 @@ namespace CabInvoiceGeneratorServiceNUnitTesting
             var Exception = Assert.Throws<InvoiceGeneratorException>(() => invoiceGenerator.returnTotalFareForMultipleRides(rideRepository.returnListByUserId("Ranjit")));
             Assert.AreEqual(Exception.type, InvoiceGeneratorException.ExceptionType.INVALID_USER_ID);
         }
-
+        [TestCase(2, 4, 38)]
+        [TestCase(0.1, 0.1, 20)]
+        public void GivenTimeAndDistance_calculatePremiumFare(double distance, double time, double output)
+        {
+            InvoiceGenerator invoiceGeneratorPremium = new InvoiceGenerator(InvoiceGenerator.ServiceType.PREMIUM_RIDE);
+            Ride ride = new Ride(distance, time);
+            Assert.AreEqual(output, invoiceGeneratorPremium.returnTotalFareForSingleRide(ride));
+        }
     }
 }
