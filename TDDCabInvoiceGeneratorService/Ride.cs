@@ -4,7 +4,9 @@ using System.Text;
 
 namespace TDDCabInvoiceGeneratorService
 {
-    class Ride
+    public class Ride
     {
+        public double distance;
+        public double time;
     }
 }
